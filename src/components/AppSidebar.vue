@@ -4,6 +4,7 @@ import { RouterLink } from 'vue-router'
 const menus = [
   { name: 'Dashboard', khmer: 'ផ្ទាំងគ្រប់គ្រង', icon: '⌂', path: '/' },
   { name: 'Lessons', khmer: 'មេរៀន', icon: '▤', path: '/lessons' },
+  { name: 'Manage Lessons', khmer: 'គ្រប់គ្រងមេរៀន', icon: '✎', path: '/manage-lessons' },
   { name: 'Git Commands', khmer: 'ពាក្យបញ្ជា', icon: '⌘', path: '/commands' },
   { name: 'Practice', khmer: 'អនុវត្តន៍', icon: '⌨', path: '/practice' },
   { name: 'Quiz', khmer: 'សំណួរតេស្ត', icon: '✓', path: '/quiz' },

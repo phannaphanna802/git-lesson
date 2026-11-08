@@ -1,4 +1,8 @@
-export const lessons = [
+import { reactive, ref } from 'vue'
+
+const STORAGE_KEY = 'git-learning-lessons'
+
+const defaultLessons = [
   {
     id: 1,
     title: 'Introduction to Git',
@@ -154,3 +158,35 @@ export const lessons = [
     ],
   },
 ]
+
+function readSavedLessons() {
+  if (typeof window === 'undefined') return defaultLessons
+
+  try {
+    const savedLessons = window.localStorage.getItem(STORAGE_KEY)
+    if (savedLessons === null) return defaultLessons
+
+    const parsedLessons = JSON.parse(savedLessons)
+    if (!Array.isArray(parsedLessons)) {
+      throw new Error('Saved lessons must be an array.')
+    }
+
+    return parsedLessons
+  } catch (error) {
+    console.error('Unable to load saved lessons.', error)
+    lessonStorageError.value = 'Saved lessons could not be loaded. New changes may replace the invalid saved data.'
+    return defaultLessons
+  }
+}
+
+export const lessonStorageError = ref('')
+export const lessons = reactive(readSavedLessons())
+
+export function saveLessons(nextLessons) {
+  if (typeof window !== 'undefined') {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nextLessons))
+  }
+
+  lessons.splice(0, lessons.length, ...nextLessons)
+  lessonStorageError.value = ''
+}

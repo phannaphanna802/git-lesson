@@ -6,10 +6,12 @@ import LessonDetail from '../pages/LessonDetail.vue'
 import Commands from '../pages/Commands.vue'
 import Practice from '../pages/Practice.vue'
 import Quiz from '../pages/Quiz.vue'
+import ManageLessons from '../pages/ManageLessons.vue'
 
 const routes = [
   { path: '/', component: Dashboard },
   { path: '/lessons', component: Lessons },
+  { path: '/manage-lessons', component: ManageLessons },
   { path: '/lessons/:id', component: LessonDetail },
   { path: '/commands', component: Commands },
   { path: '/practice', component: Practice },
