@@ -25,7 +25,7 @@ const progress = computed(() => getProgress(lessons.length))
         to="/lessons"
         class="inline-block mt-6 bg-white text-blue-700 font-bold px-6 py-3 rounded-xl hover:bg-blue-50"
       >
-        Start Learning →
+        Start Learning → .. 
       </RouterLink>
     </section>
 
